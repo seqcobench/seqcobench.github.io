@@ -298,10 +298,10 @@
     
         function updateData(idx) {
           idx = idx - 1;
-          code_1 = data[idx]["code_1"] + "\nassert f(" + data[idx]["input"] + ") == " + data[idx]["output"]; 
+          code_1 = data[idx]["original_code"] + "\nassert f(" + data[idx]["input"] + ") == " + data[idx]["output"]; 
           $("#problem1").text(code_1);
 
-          code_2 = data[idx]["code_2"] + "\nassert f(" + data[idx]["input"] + ") == " + data[idx]["output"]; 
+          code_2 = data[idx]["transformed_code"] + "\nassert f(" + data[idx]["input"] + ") == " + data[idx]["output"]; 
           $("#problem2").text(code_2);
 
           $("#input_task").text("assert f(??) == " + data[idx]["output"]);
