@@ -208,7 +208,8 @@
           </tr>
           <tr>
               <td>
-                <code class="python"><pre id="problem"></pre></code>
+                <code class="python"><pre id="problem1"></pre></code>
+                <code class="python"><pre id="problem2"></pre></code>
               </td>
           </tr>
           <tr>
@@ -289,8 +290,11 @@
     
         function updateData(idx) {
           idx = idx - 1;
-          code = data[idx]["code"] + "\nassert f(" + data[idx]["input"] + ") == " + data[idx]["output"]; 
-          $("#problem").text(code);
+          code_1 = data[idx]["code_1"] + "\nassert f(" + data[idx]["input"] + ") == " + data[idx]["output"]; 
+          $("#problem1").text(code_1);
+
+          code_2 = data[idx]["code_2"] + "\nassert f(" + data[idx]["input"] + ") == " + data[idx]["output"]; 
+          $("#problem2").text(code_2);
 
           $("#input_task").text("assert f(??) == " + data[idx]["output"]);
           $("#output_task").text("assert f(" + data[idx]["input"] + ") == ??");
