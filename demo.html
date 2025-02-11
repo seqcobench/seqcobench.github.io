@@ -222,19 +222,15 @@
           </tr>
           <tr>
             <td class="left-half">
-              <b>CRUXEval-I</b>
-              <code class="python"><pre id="input_task"></pre></code>
-              <br>
-              <code class="python"><pre id="inputs"></pre></code>
+              <b>Transformation</b>
             </td>
+            <td id="transformation"></td>
           </tr>
           <tr>
             <td>
-              <b>CRUXEval-O</b>
-              <code class="python"><pre id="output_task"></pre></code>
-              <br>
-              <code class="python"><pre id="outputs"></pre></code>
+              <b>Actual</b>
             </td>
+            <td id="actual"></td>
           </tr>
         </table>
       </div>
@@ -298,14 +294,16 @@
     
         function updateData(idx) {
           idx = idx - 1;
-          code_1 = data[idx]["original_code"] + "\nassert f(" + data[idx]["input"] + ") == " + data[idx]["output"]; 
+          code_1 = data[idx]["original_code"]
           $("#problem1").text(code_1);
 
-          code_2 = data[idx]["transformed_code"] + "\nassert f(" + data[idx]["input"] + ") == " + data[idx]["output"]; 
+          code_2 = data[idx]["transformed_code"]
           $("#problem2").text(code_2);
 
-          $("#input_task").text("assert f(??) == " + data[idx]["output"]);
-          $("#output_task").text("assert f(" + data[idx]["input"] + ") == ??");
+          transformation = data[idx]["transformation"]
+          $("#transformation").text(transformation);
+
+          $("#actual").html(data[idx]["label"]);
 
           function getn(json) {
             items = []
@@ -321,12 +319,6 @@
             .then((json) => {
               items = getn(json)
               $("#inputs").html(items)
-            });
-          fetch(`./evaluation_results/${currentModel}_temp${currentTemp}_output.json`)
-            .then((response) => response.json())
-            .then((json) => {
-              items = getn(json)
-              $("#outputs").html(items)
             });
         }
 
