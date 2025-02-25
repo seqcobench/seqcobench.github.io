@@ -4,42 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SeqCoBench Sample Explorer</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-    <link rel="shortcut icon" href="#" />
-  
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="./static/images/favicon.svg" />
+
+    <!-- Preconnect and Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-          rel="stylesheet">
-  
+
+    <!-- Bulma and Related CSS -->
     <link rel="stylesheet" href="./static/css/bulma.min.css">
     <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
     <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
     <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> <!-- <link rel="stylesheet" href="./static/css/index.css"> -->
-    <link rel="icon" href="./static/images/favicon.svg">
-  
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script defer src="./static/js/fontawesome.all.min.js"></script>
-    <script src="./static/js/bulma-carousel.min.js"></script>
-    <script src="./static/js/bulma-slider.min.js"></script>
-    <script src="./static/js/index.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
-
+    <!-- Inline Styles -->
     <style>
-      html,
-      body {
+      html, body {
         height: 100%;
         margin: 0;
         padding: 0;
       }
 
-      pre {
+      pre, code {
         padding: 0;
       }
 
@@ -50,16 +42,12 @@
         width: 100%;
       }
 
-      .header,
-      .buttons,
-      .footer,
-      .key {
+      .header, .buttons, .footer, .key {
         flex-shrink: 0;
       }
 
       .header {
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin: 10px 0;
       }
 
       .footer {
@@ -68,7 +56,6 @@
       }
 
       .scrollable-div {
-        /* flex-grow: 1; */
         height: calc(100vh - 460px);
         overflow-y: auto;
         background-color: #f5f5f5;
@@ -86,17 +73,16 @@
       }
 
       .left-col {
-        width: 200px; /* Adjust this value as per your requirement */
+        width: 200px;
       }
 
       .left-half {
-        width: 50%; /* Adjust this value as per your requirement */
+        width: 50%;
       }
 
       .left-align {
         text-align: left;
       }
-
 
       .table {
         background-color: #f5f5f5;
@@ -112,264 +98,208 @@
       }
 
       .generation {
-        background-color: #3ebd66; /* Color for "Correct" */
+        background-color: #3ebd66; /* default correct styling */
       }
 
-      .generation.correct {
-        background-color: #3ebd66; /* Color for "Correct" */
-      }
-
-      .generation.incorrect{
-        background-color: rgb(255 187 187); /* Color for "Incorrect" */
-      }
-
-      code {
-        padding: 0;
+      .generation.incorrect {
+        background-color: rgb(255 187 187);
       }
     </style>
 
+    <!-- jQuery (only once) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <!-- Deferred FontAwesome -->
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
   </head>
 
   <body>
     <div id="content" class="container-fluid d-flex flex-column align-items-center gap-3">
-      <h1 style="padding-top: 20px;" class="title is-1 publication-title">🛠️ SeqCoBench Sample Explorer 🛠️</h1>
-      <h3 class="fw-light text-center title is-3"><small id="warning">SeqCoBench is a benchmark measuring code functional equivalence capabilities!<br></small></h2>
+      <h1 style="padding-top: 20px;" class="title is-1 publication-title">
+        🛠️ SeqCoBench Sample Explorer 🛠️
+      </h1>
+      <h3 class="fw-light text-center title is-3">
+        <small id="warning">
+          SeqCoBench is a benchmark measuring code functional equivalence capabilities!<br>
+        </small>
+      </h3>
+
       <div class="column has-text-centered">
         <div class="publication-links">
           <span class="link-block">
-          <a href="./index.html"
-              class="external-link button is-normal is-rounded is-dark">
-              <span class="icon">
-                  <i class="fas fa-home"></i>
-              </span>
+            <a href="./index.html" class="external-link button is-normal is-rounded is-dark">
+              <span class="icon"><i class="fas fa-home"></i></span>
               <span>Homepage</span>
-          </a>
+            </a>
           </span>
-
           <span class="link-block">
-          <a href="./paper/seqcobench.pdf" target="_blank"
-              class="external-link button is-normal is-rounded is-dark">
-              <span class="icon">
-                  <i class="fas fa-file-pdf"></i>
-              </span>
+            <a href="./paper/seqcobench.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
+              <span class="icon"><i class="fas fa-file-pdf"></i></span>
               <span>Paper</span>
-          </a>
+            </a>
           </span>
-
           <span class="link-block">
-          <a href="https://github.com/nickil21/seqcobench"
-              class="external-link button is-normal is-rounded is-dark">
-              <span class="icon">
-                  <i class="fab fa-github"></i>
-              </span>
+            <a href="https://github.com/nickil21/seqcobench" class="external-link button is-normal is-rounded is-dark">
+              <span class="icon"><i class="fab fa-github"></i></span>
               <span>Code</span>
-          </a>
+            </a>
           </span>
-
           <span class="link-block">
-          <a href="https://huggingface.co/datasets/nickil/seqcobench"
-              class="external-link button is-normal is-rounded is-dark">
-              <span class="icon">
-                  <i class="far fa-images"></i>
-              </span>
+            <a href="https://huggingface.co/datasets/nickil/seqcobench" class="external-link button is-normal is-rounded is-dark">
+              <span class="icon"><i class="far fa-images"></i></span>
               <span>HF Dataset</span>
-          </a>
+            </a>
           </span>
-
           <span class="link-block">
-            <a href="./leaderboard.html"
-            class="external-link button is-normal is-rounded is-dark">
-            <span class="icon">
-                <i class="fa fa-trophy"></i>
-            </span>
-            <span>Leaderboard</span>
-        </a>
-        </span>
-
+            <a href="./leaderboard.html" class="external-link button is-normal is-rounded is-dark">
+              <span class="icon"><i class="fa fa-trophy"></i></span>
+              <span>Leaderboard</span>
+            </a>
+          </span>
         </div>
       </div>
-    
-    <br>
-    <div class="container">
-      <!-- Scrollable Content Area -->
-      <div class="scrollable-div">
-        <table class="table">
-          <tr>
-            <td>
-              <label for="models">model:</label> 
-              <select name="model-names" id="models"> 
-                  <option value="codellama-34b">codellama-34b</option> 
+
+      <br>
+
+      <div class="container">
+        <!-- Scrollable Content Area -->
+        <div class="scrollable-div">
+          <table class="table">
+            <tr>
+              <td>
+                <label for="models">model:</label>
+                <select id="models" name="model-names">
+                  <option value="codellama-34b">codellama-34b</option>
                   <option value="gpt-4-0613">gpt-4-0613</option>
                   <option value="gpt-3.5-turbo-0613">gpt-3.5-turbo-0613</option>
-              </select>
-              &nbsp;
-              &nbsp;
-              <label for="temps">temp:</label> 
-              <select name="temps" id="temps"> 
-                  <option value="0.2">0.2</option> 
-                  <option value="0.8">0.8</option> 
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div style="display: flex; gap: 20px;">
-                <div style="width: 450px;">
-                  <b>Original Code</b>
-                  <code class="python"><pre id="problem1"></pre></code>
+                </select>
+                &nbsp;&nbsp;
+                <label for="temps">temp:</label>
+                <select id="temps" name="temps">
+                  <option value="0.2">0.2</option>
+                  <option value="0.8">0.8</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display: flex; gap: 20px;">
+                  <div style="width: 450px;">
+                    <b>Original Code</b>
+                    <code class="python"><pre id="problem1"></pre></code>
+                  </div>
+                  <div style="width: 450px;">
+                    <b>Transformed Code</b>
+                    <code class="python"><pre id="problem2"></pre></code>
+                  </div>
                 </div>
-                <div style="width: 450px;">
-                  <b>Transformed Code</b>
-                  <code class="python"><pre id="problem2"></pre></code>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="left-half">
-              <b>Transformation</b>
-            </td>
-            <td id="transformation" class="left-align"></td>
-          </tr>
-          <tr>
-            <td class="left-half">
-              <b>Actual</b>
-            </td>
-            <td id="actual" class="left-align"></td>
-          </tr>
-        </table>
-      </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="left-half"><b>Transformation</b></td>
+              <td id="transformation" class="left-align"></td>
+            </tr>
+            <tr>
+              <td class="left-half"><b>Actual</b></td>
+              <td id="actual" class="left-align"></td>
+            </tr>
+          </table>
+        </div>
 
-      <!-- Key -->
-      <!-- <div class="key mt-3 text-center">
-        <span class="key-item correct">Correct</span>
-        <span class="key-item incorrect">Incorrect</span>
-      </div> -->
+        <!-- Navigation Buttons -->
+        <div class="navigation-buttons text-center mt-3">
+          <button type="button" id="leftButton" class="btn btn-secondary">&lt;&lt;</button>
+          <button type="button" id="randButton" class="btn btn-secondary">??</button>
+          <button type="button" id="rightButton" class="btn btn-secondary">&gt;&gt;</button>
+          <div class="mt-2">
+            <span id="currentPage">1</span> / <span id="totalPages">4</span>
+          </div>
+        </div>
 
-      <div class="navigation-buttons text-center mt-3">
-        <button type="button" id="leftButton" class="btn btn-secondary">
-          &lt;&lt;
-        </button>
-        <button type="button" id="randButton" class="btn btn-secondary">
-          ??
-        </button>
-        <button type="button" id="rightButton" class="btn btn-secondary">
-          &gt;&gt;
-        </button>
-        <div class="mt-2">
-          <span id="currentPage">1</span> / <span id="totalPages">4</span>
+        <!-- Footer -->
+        <div class="footer text-center mt-3">
+          The site is inspired by and based on
+          <a href="https://minerva-demo.github.io">Minerva sample explorer</a> and
+          <a href="https://llemma-demo.github.io/">Llemma</a>. Thanks!
         </div>
       </div>
-
-      <!-- Footer -->
-      <div class="footer text-center mt-3">
-        The site is inspired by and based on
-        <a href="https://minerva-demo.github.io">Minerva sample explorer</a> and
-        <a href="https://llemma-demo.github.io/">Llemma</a>. Thanks!
-      </div>
-
-
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap JS and dependencies -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="seqcobench.js"></script>
 
+    <!-- Inline Script -->
     <script>
       $(document).ready(function () {
-        let searchParams = new URLSearchParams(window.location.search);
-        let currentPage = 1
-        if (searchParams.has("id")) {
-          currentPage = searchParams.get('id')
-        }
-      
-        let currentModel = "codellama-34b"
-        let currentTemp = "0.2"
+        const searchParams = new URLSearchParams(window.location.search);
+        let currentPage = searchParams.has("id") ? parseInt(searchParams.get("id"), 10) : 1;
+        let currentModel = "codellama-34b";
+        let currentTemp = "0.2";
         let totalPages = 800;
-        let typingInterval; // outside of the function, to store the interval ID
-        let isTyping = false;
-        
-        data = DATA
+        let data = DATA; // Assumes DATA is defined elsewhere
         totalPages = data.length;
         $("#totalPages").text(totalPages);
         $("#currentPage").text(currentPage);
         updateData(currentPage);
         updateButtonStatus();
-    
+
         function updateData(idx) {
-          idx = idx - 1;
-          code_1 = data[idx]["original_code"]
-          $("#problem1").text(code_1);
+          const dataIndex = idx - 1;
+          $("#problem1").text(data[dataIndex]["original_code"]);
+          $("#problem2").text(data[dataIndex]["transformed_code"]);
+          $("#transformation").text(data[dataIndex]["transformation"]);
+          $("#actual").html(data[dataIndex]["label"]);
 
-          code_2 = data[idx]["transformed_code"]
-          $("#problem2").text(code_2);
-
-          transformation = data[idx]["transformation"]
-          $("#transformation").text(transformation);
-
-          $("#actual").html(data[idx]["label"]);
-
-          function getn(json) {
-            items = []
-            for (var i = 0; i < 10; i++) {
-              si = json['raw_generations']['sample_' + idx][i]
-              ci = json['raw_scored_generations']['sample_' + idx][i]? "correct" : "incorrect"
-              items.push(`<span class="generation ${ci}"> ${si} </span><br>`)
+          // Helper: get generation items based on the json structure
+          function getGenerations(json) {
+            const items = [];
+            for (let i = 0; i < 10; i++) {
+              const generationText = json['raw_generations'][`sample_${dataIndex}`][i];
+              const isCorrect = json['raw_scored_generations'][`sample_${dataIndex}`][i];
+              const statusClass = isCorrect ? "correct" : "incorrect";
+              items.push(`<span class="generation ${statusClass}">${generationText}</span><br>`);
             }
-            return items
+            return items.join('');
           }
+
           fetch(`./evaluation_results/${currentModel}_temp${currentTemp}_input.json`)
-            .then((response) => response.json())
-            .then((json) => {
-              items = getn(json)
-              $("#inputs").html(items)
+            .then(response => response.json())
+            .then(json => {
+              $("#inputs").html(getGenerations(json));
             });
         }
 
         function updateModels() {
-          models = [
-           "codellama-34b", "codellama-34b+cot", "codellama-13b", "codellama-13b+cot",
-           "deepseek-instruct-33b", "deepseek-base-33b", "codetulu-2-34b",
-           "gpt-4-0613", "gpt-4-0613+cot", "gpt-3.5-turbo-0613", "gpt-3.5-turbo-0613+cot",
-           "mistral-7b", "phi-2", "phi-1.5"]
-          items = models.map(m => `<option value="${m}">${m}</option>`)
-          $('#models').html(items)
+          const models = ["codellama-34b", "codellama-34b+cot"];
+          const options = models.map(m => `<option value="${m}">${m}</option>`);
+          $('#models').html(options);
         }
         updateModels();
 
         function updateButtonStatus() {
-          // Disable the left button if at the beginning
-          if (currentPage <= 1) {
-            $("#leftButton").prop("disabled", true);
-          } else {
-            $("#leftButton").prop("disabled", false);
-          }
-
-          // Disable the right button if at the end
-          if (currentPage >= totalPages) {
-            $("#rightButton").prop("disabled", true);
-          } else {
-            $("#rightButton").prop("disabled", false);
-          }
+          $("#leftButton").prop("disabled", currentPage <= 1);
+          $("#rightButton").prop("disabled", currentPage >= totalPages);
         }
-
-        // Initial button status update
-        updateButtonStatus();
 
         $("#leftButton").click(function () {
           if (currentPage > 1) {
             currentPage--;
             $("#currentPage").text(currentPage);
             updateData(currentPage);
+            updateButtonStatus();
           }
-          updateButtonStatus();
         });
 
         $("#randButton").click(function () {
           currentPage = Math.floor(Math.random() * totalPages) + 1;
           $("#currentPage").text(currentPage);
           updateData(currentPage);
+          updateButtonStatus();
         });
 
         $("#rightButton").click(function () {
@@ -377,43 +307,31 @@
             currentPage++;
             $("#currentPage").text(currentPage);
             updateData(currentPage);
+            updateButtonStatus();
           }
-          updateButtonStatus();
         });
 
         $(document).keydown(function (e) {
-          switch (e.which) {
-            case 37: // left arrow key
-              if (currentPage > 1) {
-                currentPage--;
-                $("#currentPage").text(currentPage);
-                updateData(currentPage);
-              }
-              updateButtonStatus();
-              break;
-
-            case 39: // right arrow key
-              if (currentPage < totalPages) {
-                currentPage++;
-                $("#currentPage").text(currentPage);
-                updateData(currentPage);
-              }
-              updateButtonStatus();
-              break;
-
-            default:
-              return; // exit this handler for other keys
+          if (e.which === 37 && currentPage > 1) { // left arrow key
+            currentPage--;
+          } else if (e.which === 39 && currentPage < totalPages) { // right arrow key
+            currentPage++;
+          } else {
+            return; // for other keys, do nothing
           }
-          e.preventDefault(); // prevent the default action (scroll / move caret)
+          $("#currentPage").text(currentPage);
+          updateData(currentPage);
+          updateButtonStatus();
+          e.preventDefault();
         });
 
         $("#models").change(function(){
-          currentModel = $('#models').val()
+          currentModel = $(this).val();
           updateData(currentPage);
         });
 
         $("#temps").change(function(){
-          currentTemp = $('#temps').val()
+          currentTemp = $(this).val();
           updateData(currentPage);
         });
       });
