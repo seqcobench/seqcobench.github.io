@@ -317,19 +317,20 @@
           $("#actual").html(data[idx]["label"]);
 
           function getn(json) {
-            items = []
-            for (var i = 0; i < 10; i++) {
-              si = json['raw_generations']['sample_' + idx][i]
-              ci = json['raw_scored_generations']['sample_' + idx][i]? "correct" : "incorrect"
-              items.push(`<span class="generation ${ci}"> ${si} </span><br>`)
-            }
+            let items = [];
+
+            json.forEach((item, index) => {
+            if (index === data['idx']) {
+              items.push(item);
+              }
+              });
             return items
           }
           fetch(`./results/${currentModel}_temp_${currentTemp}_test_dataset_small.jsonl`)
             .then((response) => response.json())
             .then((json) => {
               items = getn(json)
-              $("#prediction").html(data[idx]["prediction"]);
+              $("#prediction").html(items);
             });
         }
 
