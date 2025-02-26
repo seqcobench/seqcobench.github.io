@@ -312,6 +312,8 @@
 
           $("#actual").html(data[idx]["label"]);
 
+          $("#prediction").html(data[idx]["prediction"]);
+
           function getn(json) {
             items = []
             for (var i = 0; i < 10; i++) {
@@ -321,7 +323,7 @@
             }
             return items
           }
-          fetch(`./evaluation_results/${currentModel}_temp${currentTemp}_input.json`)
+          fetch(`./test_dataset_small.jsonl`)
             .then((response) => response.json())
             .then((json) => {
               items = getn(json)
@@ -330,7 +332,7 @@
         }
 
         function updateModels() {
-          models = ["codellama-34b", "codellama-34b+cot"]
+          models = ["gpt-4o-mini"]
           items = models.map(m => `<option value="${m}">${m}</option>`)
           $('#models').html(items)
         }
