@@ -236,6 +236,10 @@
                   <b>Actual</b>
                   <pre id="actual" class="left-align"></pre>
                 </div>
+                <div style="width: 450px;">
+                  <b>Prediction</b>
+                  <pre id="prediction" class="left-align"></pre>
+                </div>
               </div>
             </td>
           </tr>
@@ -286,9 +290,9 @@
           currentPage = searchParams.get('id')
         }
       
-        let currentModel = "codellama-34b"
+        let currentModel = "gpt-4o-mini"
         let currentTemp = "0.2"
-        let totalPages = 800;
+        let totalPages = 100;
         let typingInterval; // outside of the function, to store the interval ID
         let isTyping = false;
         
