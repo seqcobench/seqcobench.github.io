@@ -316,8 +316,6 @@
 
           $("#actual").html(data[idx]["label"]);
 
-          $("#prediction").html(data[idx]["prediction"]);
-
           function getn(json) {
             items = []
             for (var i = 0; i < 10; i++) {
@@ -327,11 +325,11 @@
             }
             return items
           }
-          fetch(`./test_dataset_small.jsonl`)
+          fetch(`./results/${currentModel}_temp_${currentTemp}_test_dataset_small.jsonl`)
             .then((response) => response.json())
             .then((json) => {
               items = getn(json)
-              $("#inputs").html(items)
+              $("#prediction").html(data[idx]["prediction"]);
             });
         }
 
